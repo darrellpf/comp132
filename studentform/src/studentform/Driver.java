@@ -8,12 +8,16 @@ public class Driver {
 		
 		Student secondPerson = new Student("Wilma", "Flintstone", 23);
 		
-		firstPerson.firstName = "Frederick";
+		firstPerson.setFirstName("Frederick");
 
 		firstPerson.setAge(-23);
 		
+		int result = firstPerson.getAge();
+		
 		Student thirdStudent = new Student("Bambam", "Rubbble", 3);
 
+		
+		System.out.println(thirdStudent);
 	}
 
 }
