@@ -14,9 +14,7 @@ public class Driver {
 		
 		int result = firstPerson.getAge();
 		
-		Student thirdStudent = new Student("Bambam", "Rubbble", 3);
-
-		
+		Student thirdStudent = new Student("Bambam", "Rubbble");		
 		System.out.println(thirdStudent);
 	}
 
