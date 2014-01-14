@@ -13,8 +13,8 @@ public class DonationBox {
 		return charityName;
 	}
 	
-	public void donate(int money) {
-		moneyTotal += 100;
+	public void donate(int moreMoney) {
+		moneyTotal += moreMoney;
 	}
 	
 	public int getMoneyTotal() {
@@ -22,6 +22,7 @@ public class DonationBox {
 	}
 	
 	public void clear() {
+		charityName = "";
 		moneyTotal = 0;
 	}
 }
