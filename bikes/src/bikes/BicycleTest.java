@@ -130,7 +130,59 @@ public class BicycleTest {
 		myBike.shiftUp();
 		
 		currentGear = myBike.getCurrentGear();
-		assertTrue(currentGear == 2);
+		assertTrue(currentGear == 2);	
+	}
+	
+	@Test
+	public void gearUpMany() {
+		int currentGear = myBike.getCurrentGear();
+		assertTrue(currentGear == 1);
+		
+		myBike.shiftUp();
+		currentGear = myBike.getCurrentGear();
+		assertTrue(currentGear == 2);	
+		
+		myBike.shiftUp();
+		currentGear = myBike.getCurrentGear();
+		assertTrue(currentGear == 3);	
+		
+		myBike.shiftUp();
+		currentGear = myBike.getCurrentGear();
+		assertTrue(currentGear == 4);	
+		
+		myBike.shiftUp();
+		currentGear = myBike.getCurrentGear();
+		assertTrue(currentGear == 5);	
+		
+		myBike.shiftUp();
+		currentGear = myBike.getCurrentGear();
+		assertTrue(currentGear == 6);	
+		
+		currentGear = myBike.getCurrentGear();
+		assertTrue(currentGear == 6);	
 		
 	}
+	
+	@Test
+	public void shiftUpStaysAtMaximum() {
+		Bicycle threeSpeed = new Bicycle(3);
+		
+		int currentGear = threeSpeed.getCurrentGear();
+		assertTrue(currentGear == 1);
+		
+		threeSpeed.shiftUp();
+		currentGear = threeSpeed.getCurrentGear();
+		assertTrue(currentGear == 2);
+
+		threeSpeed.shiftUp();
+		currentGear = threeSpeed.getCurrentGear();
+		assertTrue(currentGear == 3);
+		
+		threeSpeed.shiftUp();
+		currentGear = threeSpeed.getCurrentGear();
+		assertTrue(currentGear == 3);
+
+	}
+	
+	
 }

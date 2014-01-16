@@ -1,18 +1,40 @@
 package bikes;
 
 public class Bicycle {
-	private int gears;
+	private int maximumGears;
 	private int currentSpeed;
 	private int currentGear;
+	private String decal;
 	
 	public Bicycle(int inGears) {
-		gears = inGears;
+		maximumGears = inGears;
 		currentSpeed = 0;
 		currentGear = 1;
+		decal = "";
+	}
+	
+	public Bicycle(int inGears, String inDecal) {
+		maximumGears = inGears;
+		currentSpeed = 0;
+		currentGear = 1;
+		decal = inDecal;
+		
+	}
+	
+	public String getDecal() {
+		return decal;
 	}
 	
 	public void shiftUp() {
+		if(currentGear == maximumGears){
+			return;
+		}
+		
 		currentGear++;
+	}
+	
+	public int getMaximumGears() {
+		return maximumGears;
 	}
 	
 	public void shiftDown() {
@@ -24,7 +46,7 @@ public class Bicycle {
 	}
 	
 	public int getGears() {
-		return gears;
+		return maximumGears;
 	}
 	
 	public void pedal() {
@@ -42,4 +64,13 @@ public class Bicycle {
 	public int getCurrentSpeed() {
 		return currentSpeed;
 	}
+	
+	@Override
+	public String toString() {
+		return "CurrentGear: " + currentGear
+				+ " CurrentSpeed " + currentSpeed
+				+ " MaximumGears: " + maximumGears
+				+ "decal: " + decal;
+	}
+
 }
