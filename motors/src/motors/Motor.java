@@ -31,4 +31,12 @@ public class Motor {
 		int hoursLeft = maximumHoursBeforeService - hoursOfService;
 		return hoursLeft;
 	}
+	
+	public boolean isPastService() {
+		if(hoursOfServiceLeft() < 0) {
+			return true;
+		}
+		
+		return false;
+	}
 }
