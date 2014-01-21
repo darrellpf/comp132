@@ -33,7 +33,7 @@ public class Motor {
 	}
 	
 	public boolean isPastService() {
-		if(hoursOfServiceLeft() < 0) {
+		if(hoursOfService > maximumHoursBeforeService) {
 			return true;
 		}
 		
