@@ -1,6 +1,6 @@
 package motors;
 
-public class Motor {
+public class Motor implements Comparable<Motor>{
 	private String serialNumber;
 	private int hoursOfService;
 	private int maximumHoursBeforeService;
@@ -32,11 +32,29 @@ public class Motor {
 		return hoursLeft;
 	}
 	
+	
+	@Override
+	public int compareTo(Motor another) {
+		int difference = hoursOfService - another.getHoursOfService();
+		return difference;
+	}
+	
 	public boolean isPastService() {
 		if(hoursOfService > maximumHoursBeforeService) {
 			return true;
 		}
 		
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		String result = "";
+		
+		result += "serialNumber " + serialNumber;
+		result += " maximumHoursBeforeService " + maximumHoursBeforeService;
+		result += " hoursOfService "  + hoursOfService;
+		
+		return result;
 	}
 }

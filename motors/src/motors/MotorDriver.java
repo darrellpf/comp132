@@ -1,6 +1,7 @@
 package motors;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MotorDriver {
@@ -92,15 +93,40 @@ public class MotorDriver {
 		for (int i = 1; i < allMotors.size(); i++) {
 			Motor nextOne = allMotors.get(i);
 
-			int hoursOnBiggestSoFar = biggestMotorSoFar.getHoursOfService();
-			int hoursOnNextOne = nextOne.getHoursOfService();
-
-			if (hoursOnNextOne > hoursOnBiggestSoFar) {
+			int difference = nextOne.compareTo(biggestMotorSoFar);
+				
+			if (difference > 0) {
 				biggestMotorSoFar = nextOne;
 			}
 		}
 		
-		System.out.println("Worst is " + biggestMotorSoFar);
+		Motor actualBiggest = biggestMotorSoFar;
+		
+		System.out.println("Worst is " + actualBiggest);
+		
+		Motor biggest = Collections.max(allMotors);
+		System.out.println("Worst is " + biggest);
+		
+		Motor smallest = Collections.min(allMotors);
+		System.out.println("Smallest is " + smallest);
+
+		Collections.sort(allMotors);
+		Collections.reverse(allMotors);
+		
+		System.out.println(allMotors);
+		
+		// search for an item
+		
+		String serialToFind  = "B";
+		
+		for (Motor someMotor : allMotors) {
+			String serial = someMotor.getSerialNumber();
+			if(serialToFind.equals(serial)) {
+				System.out.println(serial);
+				break;
+			}
+
+		}
 	}
 
 }
