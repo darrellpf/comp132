@@ -127,6 +127,23 @@ public class MotorDriver {
 			}
 
 		}
+		
+		Motor fakeMotor = new Motor("B", 0);
+		Motor foundMotor = null;
+		
+		for(Motor someMotor : allMotors) {
+			if(fakeMotor.equals(someMotor)) {
+				foundMotor = someMotor;
+				break;
+			}
+		}
+		
+		System.out.println("Found " + foundMotor);
+		
+		int positionOnList = allMotors.indexOf(fakeMotor);
+		Motor theOneIWant = allMotors.get(positionOnList);
+		System.out.println("Found another " + theOneIWant);
+
 	}
 
 }
