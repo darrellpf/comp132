@@ -2,6 +2,7 @@ package motors;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class MotorDriver {
@@ -144,6 +145,17 @@ public class MotorDriver {
 		Motor theOneIWant = allMotors.get(positionOnList);
 		System.out.println("Found another " + theOneIWant);
 
+		
+		Iterator<Motor> secretary = allMotors.iterator();
+		
+		while(secretary.hasNext()) {
+			Motor someMotor = secretary.next();
+			System.out.println(someMotor);
+		}
+		
+		for(Motor someMotor : allMotors) {
+			System.out.println(someMotor);			
+		}
 	}
 
 }

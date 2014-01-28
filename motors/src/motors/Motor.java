@@ -1,6 +1,6 @@
 package motors;
 
-public class Motor implements Comparable<Motor>{
+public class Motor implements MotorStandard{
 	private String serialNumber;
 	private int hoursOfService;
 	private int maximumHoursBeforeService;
@@ -46,8 +46,13 @@ public class Motor implements Comparable<Motor>{
 	
 	
 	@Override
-	public int compareTo(Motor another) {
-		int difference = hoursOfService - another.hoursOfService;
+	public int compareTo(MotorStandard another) {
+		int difference = serialNumber.compareTo(another.getSerialNumber());
+		if(difference != 0) {
+			return difference;
+		}
+		
+		difference = hoursOfService - another.getHoursOfService();
 		return difference;
 	}
 	
