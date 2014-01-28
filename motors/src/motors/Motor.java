@@ -10,6 +10,18 @@ public class Motor implements Comparable<Motor>{
 		hoursOfService = 0;
 		maximumHoursBeforeService = inMaximumHoursBeforeService;
 	}
+	
+	@Override
+	public boolean equals(Object what) {
+		Motor another = (Motor) what;
+		
+		if(serialNumber.equals(another.serialNumber)) {
+			return true;
+		}
+		
+		
+		return false;
+	}
 
 	public String getSerialNumber() {
 		return serialNumber;
@@ -35,7 +47,7 @@ public class Motor implements Comparable<Motor>{
 	
 	@Override
 	public int compareTo(Motor another) {
-		int difference = hoursOfService - another.getHoursOfService();
+		int difference = hoursOfService - another.hoursOfService;
 		return difference;
 	}
 	
