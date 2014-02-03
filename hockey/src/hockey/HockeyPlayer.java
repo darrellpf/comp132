@@ -1,14 +1,16 @@
 package hockey;
 
-public class HockeyPlayer {
+public class HockeyPlayer implements Comparable<HockeyPlayer>{
 	private String firstName;
 	private String lastName;
 	private int goals;
+	private int assists;
 	
 	public HockeyPlayer(String inFirst, String inLast) {
 		firstName = inFirst;
 		lastName = inLast;
 		goals = 0;
+		assists = 0;
 	}
 	
 	public int getGoals() {
@@ -21,6 +23,14 @@ public class HockeyPlayer {
 	
 	public String getLastName() {
 		return lastName;
+	}
+	
+	public int getAssists() {
+		return assists;
+	}
+	
+	public int getTotalPoints() {
+		return goals + assists;
 	}
 	
 	@Override
@@ -39,5 +49,18 @@ public class HockeyPlayer {
 	
 	public void scoredGoal() {
 		goals++;
+	}
+	
+	public void scoredAssist() {
+		assists++;
+	}
+
+	@Override
+	public int compareTo(HockeyPlayer other) {
+		int myTotalPoints = getTotalPoints();
+		int otherTotalPoints = other.getTotalPoints();
+		
+		int difference = myTotalPoints - otherTotalPoints;
+		return difference;
 	}
 }

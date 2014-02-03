@@ -14,6 +14,19 @@ public class HockeyDriver {
 		}
 		
 		myTeam.scoredGoal(new HockeyPlayer("Daniel", "Sedin"));
+
+		int totalPoints = myTeam.getTotalPoints();
+		
+		myTeam.scoredGoal(new HockeyPlayer("Daniel", "Sedin"));
+		myTeam.scoredGoal(new HockeyPlayer("Daniel", "Sedin"));
+
+		myTeam.scoredAssist(new HockeyPlayer("Henry", "Sedin"));
+
+		System.out.println("In order of points");
+		
+		for(HockeyPlayer who : myTeam) {
+			System.out.println(who.getTotalPoints() + " " + who.getFirstName() + " " + who.getLastName());
+		}
 	}
 
 }
