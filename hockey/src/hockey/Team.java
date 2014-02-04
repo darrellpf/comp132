@@ -49,4 +49,15 @@ public class Team implements Iterable<HockeyPlayer>{
 		Collections.reverse(allPlayers);
 		return allPlayers.iterator();
 	}
+	
+	public Iterator<HockeyPlayer> iteratorByLastName() {
+		Collections.sort(allPlayers, HockeyPlayer.byLastNameFirstName());
+		return allPlayers.iterator();
+	}
+	
+	public List<HockeyPlayer> getPlayersByLastName() {
+		List<HockeyPlayer> newList = new ArrayList<HockeyPlayer>(allPlayers);
+		Collections.sort(newList, HockeyPlayer.byLastNameFirstName());
+		return newList;
+	}
 }

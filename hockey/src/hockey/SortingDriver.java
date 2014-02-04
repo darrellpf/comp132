@@ -25,8 +25,8 @@ public class SortingDriver {
 		
 		allPlayers.add(new HockeyPlayer("Daniel", "Sedin"));
 		
-		Comparator<HockeyPlayer> alternateSorter = new AlternateSort();
-		Collections.sort(allPlayers, alternateSorter);
+		
+		Collections.sort(allPlayers, HockeyPlayer.byFirstNameLastName());
 
 		for(HockeyPlayer who : allPlayers) {
 			System.out.println(who.getTotalPoints() + " " + who.getFirstName() + " " + who.getLastName());

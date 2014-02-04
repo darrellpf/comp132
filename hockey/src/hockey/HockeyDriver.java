@@ -1,5 +1,10 @@
 package hockey;
 
+import java.util.Iterator;
+import java.util.List;
+
+
+
 public class HockeyDriver {
 
 	public static void main(String[] args) {
@@ -26,6 +31,20 @@ public class HockeyDriver {
 		
 		for(HockeyPlayer who : myTeam) {
 			System.out.println(who.getTotalPoints() + " " + who.getFirstName() + " " + who.getLastName());
+		}
+		
+		System.out.println("Alphabetical");
+		
+		Iterator<HockeyPlayer> alpha = myTeam.iteratorByLastName();
+		while(alpha.hasNext()) {
+			HockeyPlayer who = alpha.next();
+			System.out.println(who.getTotalPoints() + " " + who.getFirstName() + " " + who.getLastName());	
+		}
+		
+		System.out.println("Alphabetical by list");
+		
+		for(HockeyPlayer who : myTeam.getPlayersByLastName()) {
+			System.out.println(who.getTotalPoints() + " " + who.getFirstName() + " " + who.getLastName());		
 		}
 	}
 
