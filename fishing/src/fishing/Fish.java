@@ -1,6 +1,6 @@
 package fishing;
 
-public class Fish {
+public class Fish implements Comparable<Fish>{
 	private int weight;
 	private String type;
 	
@@ -15,5 +15,10 @@ public class Fish {
 	
 	public int getWeight() {
 		return weight;
+	}
+
+	@Override
+	public int compareTo(Fish another) {
+		return weight - another.weight;
 	}
 }
