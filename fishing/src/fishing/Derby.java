@@ -2,9 +2,10 @@ package fishing;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class Derby {
+public class Derby implements Iterable<Bucket>{
 	private String name;
 	private List<Bucket> allBuckets;
 	
@@ -30,5 +31,17 @@ public class Derby {
 	
 	public void register(Bucket aBucket) {
 		allBuckets.add(aBucket);
+	}
+
+	@Override
+	public Iterator<Bucket> iterator() {
+		Collections.sort(allBuckets);
+		Collections.reverse(allBuckets);
+		return allBuckets.iterator();
+	}
+	
+	public List<Bucket> byLastName() {
+		Collections.sort(allBuckets, Bucket.byLastNameFirstName());
+		return allBuckets;
 	}
 }

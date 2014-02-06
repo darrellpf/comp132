@@ -35,6 +35,30 @@ public class FishDriver {
 		System.out.println("Winner is " + winner.getFirstName() + " " + winner.getLastName());
 		Fish biggest = winner.getBiggestFish();
 		System.out.println("With a " + biggest.getWeight() + " " + biggest.getType());
+	
+		// Print out placements
+		
+		System.out.println();
+		System.out.println("Placements");
+		System.out.println();
+		
+		for(Bucket aBucket : registrationDesk) {
+			Fish biggestFish = aBucket.getBiggestFish();
+			
+			System.out.println(aBucket.getFirstName() + " " + aBucket.getLastName() + " " + biggestFish.getWeight());
+		}
+		
+		// Print out alphabetical
+		
+		System.out.println();
+		System.out.println("Alphabetical");
+		System.out.println();
+		
+		for(Bucket aBucket : registrationDesk.byLastName()) {
+			Fish biggestFish = aBucket.getBiggestFish();
+			
+			System.out.println(aBucket.getFirstName() + " " + aBucket.getLastName() + " " + biggestFish.getWeight());
+		}
 	}
 
 }
