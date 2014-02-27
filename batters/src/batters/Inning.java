@@ -8,14 +8,14 @@ import java.util.List;
 public class Inning implements InningInterface {
 	private int inningNumber;
 	private List<BatterInterface> allBatters;
-	private int nextBatterUp;
+	private int batterOnDeck;
 	private int outs;
 	private BatterInterface currentBatter;
 
 	public Inning(int inInningNumber) {
 		inningNumber = inInningNumber;
 		allBatters = new ArrayList<BatterInterface>();
-		nextBatterUp = 0;
+		batterOnDeck = 0;
 		outs = 0;
 		currentBatter = new Batter("",1);
 	}
@@ -37,8 +37,8 @@ public class Inning implements InningInterface {
 			return;
 		}
 
-		currentBatter = allBatters.get(nextBatterUp);
-		nextBatterUp++;
+		currentBatter = allBatters.get(batterOnDeck);
+		batterOnDeck++;
 	}
 
 	@Override
