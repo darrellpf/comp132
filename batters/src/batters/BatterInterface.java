@@ -19,6 +19,8 @@ public interface BatterInterface extends Comparable<BatterInterface> {
 	public int getStrikeCount();
 
 	public void fouled();
+	
+	public void finishedAtBat();
 
 	public int getFoulCount();
 

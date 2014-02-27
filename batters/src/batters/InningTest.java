@@ -140,5 +140,46 @@ public class InningTest {
 		
 		assertTrue(anInning.getTotalRuns() == 0);
 	}
-
+	
+	@Test
+	public void ballsGoesUp() {
+		anInning.batterUp();	
+		assertTrue(anInning.getCurrentBatter() == 1);
+		anInning.ballCalled();
+		anInning.ballCalled();
+		anInning.ballCalled();
+		anInning.ballCalled();
+	
+		assertTrue(anInning.getOuts() == 0);
+		assertTrue(anInning.getTotalRuns() == 0);
+		
+		anInning.batterUp();		
+		assertTrue(anInning.getCurrentBatter() == 2);
+		anInning.ballCalled();
+		anInning.ballCalled();
+		anInning.ballCalled();
+		anInning.ballCalled();
+		
+		assertTrue(anInning.getOuts() == 0);
+		assertTrue(anInning.getTotalRuns() == 0);
+		
+		anInning.batterUp();		
+		assertTrue(anInning.getCurrentBatter() == 3);
+		anInning.ballCalled();
+		anInning.ballCalled();
+		anInning.ballCalled();
+		anInning.ballCalled();
+		
+		assertTrue(anInning.getOuts() == 0);
+		assertTrue(anInning.getTotalRuns() == 0);
+		
+		assertTrue(anInning.inningOver() == false);
+		
+		assertTrue(anInning.getCurrentBatter() == 3);
+		}
+	
+	@Test
+	public void currentBatterAtStartOfGame() {
+		assertTrue(anInning.getCurrentBatter() == 1);
+	}
 }
