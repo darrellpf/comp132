@@ -11,7 +11,18 @@ public class FileDriver {
 	public static void main(String[] args) throws MalformedURLException,
 			IOException {
 
-		// System.out.println("Hello");
+		System.out.println("Enter input");
+
+		Scanner input = new Scanner(System.in);
+
+		String result = "";
+
+		while (result.equals("done") == false) {
+			result = input.nextLine();
+			System.out.println("You said: " + result);
+		}
+		
+		input.close();
 
 		PrintWriter writer = new PrintWriter(new File("myFile.txt"));
 		writer.println("Hello a longer line");
