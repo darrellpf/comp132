@@ -17,6 +17,34 @@ public class StudentFileDriver {
 
 		String fileName = "studentFile.txt";
 		
+		writeOutFile(fileName, allStudents);
+		
+		List<Student> aCopy = new ArrayList<>(allStudents);
+		
+		Student fred1 = allStudents.get(0);
+		Student fred2 = aCopy.get(0);
+		
+		if(fred1 == fred2) {
+			System.out.println("Fred1 and Fred2 are the same");
+		}
+		
+		List<Student> copyOfStudents = readInFile(fileName);
+			
+		for(Student aStudent : copyOfStudents) {
+			System.out.println(aStudent.getFirstName());
+		}
+		
+		Student fred10 = allStudents.get(0);
+		Student fred20 = copyOfStudents.get(0);
+
+		if(fred10 == fred20) {
+			System.out.println("Fred10 and Fred20 are the same");
+		}
+		
+		
+	}
+	
+	private static void writeOutFile(String fileName, List<Student> allStudents) throws FileNotFoundException {
 		PrintWriter writer = new PrintWriter(new File(fileName));
 
 		for(Student who : allStudents) {
@@ -32,7 +60,9 @@ public class StudentFileDriver {
 		}
 		
 		writer.close();
-		
+	}
+	
+	private static List<Student> readInFile(String fileName) throws FileNotFoundException {
 		List<Student> copyOfStudents = new ArrayList<>();
 		
 		Scanner inFile = new Scanner(new File(fileName));
@@ -53,9 +83,7 @@ public class StudentFileDriver {
 		
 		inFile.close();
 		
-		for(Student aStudent : copyOfStudents) {
-			System.out.println(aStudent.getFirstName());
-		}
+		return copyOfStudents;
 	}
 
 }
