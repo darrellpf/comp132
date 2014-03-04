@@ -43,7 +43,7 @@ public class EmceeTest {
 
 	@Test
 	public void initalized() {
-		Thrower currentThrower = host.getCurrentThrower();
+		ThrowerAbstract currentThrower = host.getCurrentThrower();
 		assertTrue(currentThrower.hasNext() == false);
 		
 		Iterator<InstructorInterface> iter = host.iterator();
