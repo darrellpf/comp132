@@ -1,5 +1,7 @@
+import java.io.Serializable;
 
-public class Student {
+
+public class Student implements Serializable{
     private String firstName;
     private String lastName;
     private int age;
@@ -8,6 +10,13 @@ public class Student {
         firstName = inFirstName;
         lastName = inLastName;
         age = inAge;
+    }
+    
+    public Student() {
+        firstName = "";
+        lastName = "";
+        age = 0;
+  	
     }
 
     public String getFirstName() {

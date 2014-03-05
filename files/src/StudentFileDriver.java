@@ -1,10 +1,20 @@
+import java.beans.XMLEncoder;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 public class StudentFileDriver {
 
@@ -40,9 +50,71 @@ public class StudentFileDriver {
 		if(fred10 == fred20) {
 			System.out.println("Fred10 and Fred20 are the same");
 		}
+
+		allStudents.add(allStudents.get(0));
 		
+		String objectFileName = "students.obj";
+		writeObjectStudentFile(objectFileName, allStudents);
 		
+		List<Student> anotherCopy = readObjectStudentFile(objectFileName);
+		
+		System.out.println("Names from object file");
+		
+		for(Student aStudent : anotherCopy) {
+			System.out.println(aStudent.getFirstName());
+		}
+		
+		Student fred30 = allStudents.get(0);
+		Student fred40 = anotherCopy.get(3);
+
+		if(fred30 == fred40) {
+			System.out.println("Fred30 and Fred40 are the same");
+		}
+		
+		printMethods();
+		
+		String xmlFileName = "students.xml";
+
+		writeXMLStudentFile(xmlFileName, allStudents);
 	}
+	
+	private static void writeXMLStudentFile(String fileName,
+			List<Student> allStudents) {
+		try (XMLEncoder writer = new XMLEncoder(new FileOutputStream(fileName))) {
+			writer.writeObject(allStudents);
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+	}
+	
+	private static List<Student> readObjectStudentFile(String fileName) {
+		List<Student> copyStudents = null;
+
+		try (ObjectInputStream reader = new ObjectInputStream(
+				new FileInputStream(fileName))) {
+
+			copyStudents = (List<Student>) reader.readObject();
+
+		} catch (IOException | ClassNotFoundException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+
+		return copyStudents;
+	}
+	
+	private static void writeObjectStudentFile(String fileName,
+			List<Student> allStudents) {
+
+		try (ObjectOutputStream writer = new ObjectOutputStream(
+				new FileOutputStream(fileName))) {
+
+			writer.writeObject(allStudents);
+
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+	}
+	
 	
 	private static void writeOutFile(String fileName, List<Student> allStudents) throws FileNotFoundException {
 		PrintWriter writer = new PrintWriter(new File(fileName));
@@ -85,5 +157,17 @@ public class StudentFileDriver {
 		
 		return copyOfStudents;
 	}
+	
+	private static void printMethods() {
+		System.out.println("Methods of Students");
+
+		Class<Student> aClass = Student.class;
+
+		for (Method aMethod : aClass.getDeclaredMethods()) {
+			System.out.println(aMethod.getName());
+		}
+	}
 
 }
+
+
