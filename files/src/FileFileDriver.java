@@ -20,7 +20,9 @@ public class FileFileDriver {
 		
 		Arrays.sort(allFiles, new Comparator<File>() {
 			public int compare(File a, File b) {
-				return (int) a.length() - (int) b.length();
+				Long aLong = a.length();
+				Long bLong = b.length();
+				return aLong.compareTo(bLong);
 			}
 		});
 		
