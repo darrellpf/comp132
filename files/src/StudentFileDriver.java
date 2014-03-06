@@ -1,3 +1,4 @@
+import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -76,6 +77,12 @@ public class StudentFileDriver {
 		String xmlFileName = "students.xml";
 
 		writeXMLStudentFile(xmlFileName, allStudents);
+		
+		List<Student> xmlread  = readXMLStudentFile(xmlFileName);
+		
+		for(Student who : xmlread) {
+			System.out.println(who.getLastName());
+		}
 	}
 	
 	private static void writeXMLStudentFile(String fileName,
@@ -85,6 +92,17 @@ public class StudentFileDriver {
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);
 		}
+	}
+	
+	private static List<Student> readXMLStudentFile(String fileName) {
+		List<Student> anotherListStudents = null;
+		try (XMLDecoder reader = new XMLDecoder(new FileInputStream(fileName))) {
+			anotherListStudents = (List<Student>) reader.readObject();
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+
+		return anotherListStudents;
 	}
 	
 	private static List<Student> readObjectStudentFile(String fileName) {
